@@ -4,21 +4,23 @@ public class IntegerPrimitives {
 int a;
 
 public static byte getMaxByte() {
-	// TODO Auto-generated method stub
-	return -1;
+	byte res =1;
+	while (res>0)
+		res = (byte) (res*2);
+	return (byte) (res-1);
 }
 
 public static byte getMinByte() {
-	// TODO Auto-generated method stub
-	return -1;
+	
+	return (byte) (getMaxByte() +1);
 }
 
 public static int getLengthByte() {
-	// TODO Auto-generated method stub
-	return -1;
+	byte a = 0;
+	return getLength  (a);
 }
 
-public static int getMaxChar() {
+public static char getMaxChar() {
 	char res = 1; 
 	while (res > 0) {
 		res = (char) (res * 2);
@@ -32,64 +34,72 @@ public static char getMinChar() {
 }
 
 public static int getLengthChar() {
-	// TODO Auto-generated method stub
-	return -1;
+	//char a = 0;
+	return getLength (getMaxChar());
 }
 
 public static short getMaxShort() {
+	
+	return (short) (getMinShort()-1);
+}
+
+public static short getMinShort() {
 	short res = 1; 
 	while (res > 0) {
 		res = (short) ((int)res * 2);
 	}
-	return (short) (res-1);
-}
-
-public static short getMinShort() {
-	// TODO Auto-generated method stub
-	return -1;
+	return (short) (res);
 }
 
 public static int getLengthShort() {
-	// TODO Auto-generated method stub
-	return -1;
+	//short a = 0;
+	return getLength (getMaxShort());
 }
 
 public static int getMaxInt() {
-	// TODO Auto-generated method stub
-	return -1;
+	
+	return getMinInt() - 1;
 }
 
 public static int getMinInt() {
-	// TODO Auto-generated method stub
-	return -1;
+	int res = 1;
+	while (res >0) {
+		res = res * 2;
+	}
+	return res;
 }
 
 public static int getLengthInt() {
-	// TODO Auto-generated method stub
-	return -1;
+	//int a = 0;
+	return getLength(getMaxInt());
 }
 
 public static long getMaxLong() {
+	
+	return getMinLong()-1;
+}
+
+public static long getMinLong() {
 	long res = 1; 
 	while (res > 0) {
 		res = res * 2;
 	}
-	return res-1;
-}
-
-public static long getMinLong() {
-	// TODO Auto-generated method stub
-	return -1;
+	return res;
 }
 
 public static int getLengthLong() {
-	// TODO Auto-generated method stub
+	//long a = 0;
 	
-	return -1;
+	return getLength(getMaxLong());
 }
 private static int getLength (long x) {
-//TODO
-	
-	return -1;
+ long res = x;
+ int i=0;
+    while (res>1) {
+		res =res/2;
+		i++;
+	}
+	int b_size = i/8+1;
+	return b_size;
 }
 }
