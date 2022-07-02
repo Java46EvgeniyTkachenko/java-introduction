@@ -1,5 +1,6 @@
 package telran.text;
 
+
 import java.util.Arrays;
 
 public class Stringstext {
