@@ -1,6 +1,8 @@
 package telran.text;
 
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import java.util.Arrays;
 
 public class Stringstext {
@@ -42,30 +44,16 @@ public class Stringstext {
 	 *     (2) str2 comprises of all letters from str1
 	 */
 	public static boolean isAnagram(String str1, String str2) {
-		boolean res = false;
-		if (str1.length() == str2.length()) {
-			res = true;
-		}
-		
-	    if (res) {
+
 			char[] ResStr1 = str1.toCharArray();		
 			char[] ResStr2 = str2.toCharArray();
 			
 			Arrays.sort(ResStr1);
 		 	Arrays.sort(ResStr2);
 		 	
-			for(int i = 1; i <= str2.length(); i++) {
-				if (ResStr1[i-1] != ResStr2[i-1]) {
-					res = false;
-					break;
-				}
-				
-			}
-	    }
-		
 		// additional helper array such that array['a'] is the number of 'a' occurrences in str1
 		//str1 = "hello", array['l'] = 2; array['w'] = 0;
-		return res;
+		return   Arrays.equals(ResStr1, ResStr2);
 		
 	
 }
