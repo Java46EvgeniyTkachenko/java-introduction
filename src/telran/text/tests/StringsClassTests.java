@@ -1,4 +1,4 @@
-package telran.text.test;
+package telran.text.tests;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -72,27 +72,18 @@ class StringsClassTests {
 //	        - Anna Maria Magdalena vs. Anna Maria Roberta: no match
 //	        - Anna Maria Magdalena vs. Anna Magdalena Roberta: no match
 //	        - Anna Maria Magdalena vs. Anna Magdalena Maria: no match
-		String str1 = "David";
-		String str2 = "david";
-		String str3 = "John F";
-		String str4 = "John Fitzgerald";
-		String str5 = "John K";
-		String str6 = "Anna Maria Magdalena";
-		String str7 = "Anna Magdalena";
-		String str8 = "Maria Magdalena";
-		String str9 = "Anna Maria Roberta";
-		String str10 = "Anna Magdalena Roberta";
-		String str11 = "Anna Magdalena Maria";
-		String expectedY = "match";
-		String expectedN = "no match";
-		assertEquals(expectedY, Strings.matches(str1, str2));   
-		assertEquals(expectedY, Strings.matches(str3, str4)); 
-		assertEquals(expectedN, Strings.matches(str5, str4)); 
-		assertEquals(expectedY, Strings.matches(str6, str7)); 
-		assertEquals(expectedY, Strings.matches(str6, str8)); 
-		assertEquals(expectedN, Strings.matches(str6, str9)); 
-		assertEquals(expectedN, Strings.matches(str6, str10)); 
-		assertEquals(expectedN, Strings.matches(str6, str11)); 
+		String match = "match";
+		String noMatch = "no match";
+		assertEquals(match, Strings.matches("David", "david"));
+		assertEquals(match, Strings.matches("John F", "John Fitzgerald"));
+		assertEquals(match, Strings.matches("John Fit", "John F"));
+		assertEquals(noMatch, Strings.matches("John K", "John Fitzgerald"));
+		assertEquals(match, Strings.matches("Anna Maria Magdalena", "Anna Magdalena"));
+		assertEquals(match, Strings.matches("Anna Maria Magdalena", "Maria Magdalena"));
+		assertEquals(match, Strings.matches("Anna Maria Magdalena", "Anna Maria"));
+		assertEquals(noMatch, Strings.matches("Anna Maria Magdalena", "Anna Maria Roberta"));
+		assertEquals(noMatch, Strings.matches("Anna Maria Magdalena", "Anna Magdalena Roberta"));
+		assertEquals(noMatch, Strings.matches("Anna Maria Magdalena", "Anna Magdalena Maria"));
 			
 	}
 	@Test
