@@ -12,7 +12,7 @@ class StringRegExTests {
 		assertTrue(isJavaVariable("__"));
 		assertTrue(isJavaVariable("$"));
 		assertTrue(isJavaVariable("$_"));
-		assertTrue(isJavaVariable("abc"));
+		assertTrue(isJavaVariable("a"));
 		assertTrue(isJavaVariable("abc100"));
 		assertTrue(isJavaVariable("$2"));
 		assertTrue(isJavaVariable("_2"));
@@ -42,5 +42,18 @@ class StringRegExTests {
 		assertFalse(isIPv4("100.10.1.256"));
 		assertFalse(isIPv4("a.10.1.1"));
 		
+	}
+	@Test
+	void CheckArithmeticExpressionTrue() {
+	assertTrue(isArithmeticExpression("( a + 2)+(c*1234.234)"));
+	assertTrue(isArithmeticExpression("( R_d / 15.2)*(1234.234-y)"));
+	
+	}
+	@Test
+	void CheckArithmeticExpressionFalse() {
+	assertFalse(isArithmeticExpression("( a + 2)+(b*2))"));
+	assertFalse(isArithmeticExpression("( -5 / 15.2)*(4-y)"));
+	assertFalse(isArithmeticExpression("( 5 / 15.2)(4-y)"));
+	
 	}
 }

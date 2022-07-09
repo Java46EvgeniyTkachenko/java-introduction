@@ -171,16 +171,21 @@ public static boolean isIPv4(String ipV4str) {
 		
 		return ipV4str.matches(ipV4Regex());
 	}
+	
 	public static boolean isJavaVariable(String javaVariable) {
 		
 		return javaVariable.matches(javaVariableRegex());
 	}
+	
+	
 	public static boolean isArithmeticExpression(String expression) {
-		if(!checkParentheses(expression)) {
+		if (!checkParentheses(expression)) {
+
 			return false;
 		}
+
 		expression = removeSpacesAndParentheses(expression);
-		
+
 		return expression.matches(arithmeticExpression());
 	}
 	/**
@@ -189,9 +194,14 @@ public static boolean isIPv4(String ipV4str) {
 	 * returns string with no parentheses and no spaces
 	 */
 	private static String removeSpacesAndParentheses(String expression) {
-		// TODO Auto-generated method stub
-		return "";
-		
+
+		String Str = expression;
+		Str = Str.replace("(", "");
+		Str = Str.replace(")", "");
+		Str = Str.replace(" ", "");
+
+		return Str;
+
 	}
 	/**
 	 * 
@@ -201,9 +211,26 @@ public static boolean isIPv4(String ipV4str) {
 	 * (ab))((cd) - false
 	 */
 	private static boolean checkParentheses(String expression) {
-		// TODO Auto-generated method stub
-		//Hint: count with ++ for '(' and -- ')'. 
-		return false;
+
+		// Hint: count with ++ for '(' and -- ')'.
+
+		if (expression.contains(")("))
+			return false;
+		int count = 0;
+
+		for (int i = 0; i < expression.length(); i++) {
+			if (expression.charAt(i) == '(')
+				count++;
+			if (expression.charAt(i) == ')')
+				count--;
+			if (count == -1)
+				return false;
+
+		}
+		if (count != 0)
+			return false;
+
+		return true;
 	}
 
 }

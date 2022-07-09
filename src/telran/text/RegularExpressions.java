@@ -16,6 +16,10 @@ public static String ipV4Regex() {
 
 return String.format("((%s)\\.){3}(%s)", ipOctetRegex(), ipOctetRegex());
 }
+private static String NumRegex() {
+	
+return "[a-zA-Z$][\\w$]*|_[\\w$]+|\\d+(\\.\\d+)?";
+}
 /**
 * 
 * @return regular expression for arithmetic expression
@@ -29,6 +33,7 @@ return String.format("((%s)\\.){3}(%s)", ipOctetRegex(), ipOctetRegex());
 * a + (-10 * 2) => wrong
 */
 public static String arithmeticExpression() {
-return "";
+	
+return String.format("((%s)[+*/-])+(%s)", NumRegex(),  NumRegex());
 }
 }
